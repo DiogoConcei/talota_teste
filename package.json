@@ -1,0 +1,20 @@
+{
+  "name": "pagina-romantica-talita",
+  "version": "1.0.0",
+  "description": "Template romântico especial para Talita",
+  "main": "script.js",
+  "scripts": {
+    "build": "node --check script.js",
+    "lint": "node --check script.js",
+    "test": "node --check script.js"
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "javascript",
+    "amor",
+    "template"
+  ],
+  "author": "Diogo",
+  "license": "MIT"
+}

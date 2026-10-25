@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Talita ❤️</title>
+    <meta
+      name="description"
+      content="Um cantinho especial feito com carinho para Talita."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Canvas para animação de corações em segundo plano -->
+    <canvas id="canvasCoracoes"></canvas>
+
+    <main class="container-principal">
+      <!-- Loading: Cartinha com animação de 10 segundos -->
+      <section
+        class="container-cartinha-centro"
+        id="containerCartinhaLoading"
+        aria-label="Cartinha com surpresa"
+      >
+        <div class="cartinha-wrapper">
+          <div
+            class="cartinha-envelope tremendo"
+            id="cartinhaEnvelope"
+            aria-label="Cartinha para Talita"
+          >
+            <div class="envelope-aba"></div>
+            <div class="envelope-corpo">
+              <div class="envelope-selo-coracao" id="envelopeSelo">💖</div>
+            </div>
+          </div>
+          <div class="container-loading-romantico">
+            <div class="trilha-barra-progresso">
+              <div
+                class="preenchimento-barra-progresso"
+                id="barraProgressoLoading"
+              ></div>
+            </div>
+            <div class="status-loading-info">
+              <span id="textoStatusLoading">Guardando amor na cartinha...</span>
+              <span class="porcentagem-loading" id="porcentagemLoading"
+                >0,00%</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mural revelado após o loading -->
+      <section
+        class="mural-polaroids-revelado oculto"
+        id="muralPolaroids"
+        aria-label="Mural de fotos e cartinha"
+      >
+        <div class="composicao-triptico-romantica">
+          <!-- Coluna Esquerda: 3 Polaroids (slots 0, 1, 2) -->
+          <aside
+            class="coluna-polaroids coluna-esquerda"
+            aria-label="Fotos à esquerda"
+          >
+            <article class="card-polaroid-autentica polaroid-esq-1">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="0" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="0"></span>
+            </article>
+            <article class="card-polaroid-autentica polaroid-esq-2">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="1" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="1"></span>
+            </article>
+            <article class="card-polaroid-autentica polaroid-esq-3">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="2" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="2"></span>
+            </article>
+          </aside>
+
+          <!-- Centro: Cartinha em papel branco -->
+          <div class="area-foco-cartinha">
+            <article class="papel-cartinha-centro foco-principal">
+              <div class="papel-canto-dobrado"></div>
+              <div class="papel-corpo">
+                <div class="selo-cartinha-topo">💌</div>
+                <h2 class="papel-titulo">Para Talita</h2>
+                <div class="papel-texto">
+                  <p>
+                    Você vem me ensinando que se pode estar com alguém sem se
+                    sentir ansioso o tempo inteiro. Vem me ensinando que é
+                    possível gostar do próximo com calma e ir construindo uma
+                    relação aos poucos, porque o amor não precisa ser apressado
+                    e grudento o tempo inteiro. Mesmo nos momentos onde o
+                    assunto parece ter acabado.
+                  </p>
+                  <p>
+                    Passei a vida inteira com pessoas me dizendo que eu não sou
+                    exatamente fácil de lidar e, muitas vezes, cheguei a escutar
+                    que era "demais o tempo inteiro". Então, às vezes, me
+                    questiono se realmente mereço todo o amor e carinho que você
+                    divide comigo todos os dias. Fiz essa surpresa justamente
+                    como forma de mostrar que também gosto muito de você, porque
+                    nos últimos dias você tem mostrado tanto que me ama que eu
+                    acho injusto não mostrar que é recíproco.
+                  </p>
+                  <p>
+                    Separei alguns dos momentos que tive com você que, com
+                    certeza, mudaram a química do meu cérebro — aqueles momentos
+                    em que você fica sem saber o que fazer e a única vontade que
+                    aparece é a de comemorar de felicidade, sabe?
+                  </p>
+                  <p>
+                    <em
+                      >"Mas nem todos são só comigo e nem todos são só
+                      românticos."</em
+                    >
+                    Você também tem me mostrado que, para uma relação funcionar,
+                    é necessário ter equilíbrio: romance, companheirismo e não
+                    só pegação e trocas de "eu gosto muito de você" o tempo
+                    inteiro. Os momentos em que você mostra que quer a minha
+                    companhia sempre me enchem de felicidade, assim como os
+                    momentos em que compartilhamos nossos interesses.
+                  </p>
+                  <p>
+                    Me desculpe se eu exagerei, se fui "emocionado demais" ou
+                    "intenso demais" — é que, nesse ponto, eu já não consigo
+                    mais negar que estou totalmente entregue a você e que quero
+                    muito fazer as coisas darem certo.
+                  </p>
+                </div>
+                <p class="papel-assinatura">
+                  — Com carinho e ternura, Diogo ❤️
+                </p>
+              </div>
+            </article>
+
+            <!-- Botão para abrir o modal de fotos adicionais -->
+            <button
+              type="button"
+              class="botao-ver-mais"
+              id="btnVerMaisFotos"
+              aria-label="Ver mais fotos"
+            >
+              <span>Ver mais fotos</span>
+              <span aria-hidden="true">📷</span>
+            </button>
+
+            <!-- Motivos Para Te Amar -->
+            <div
+              class="card-romantico caixa-interativa-motivos"
+              aria-label="Mensagens e motivos para te amar"
+            >
+              <h3 class="titulo-secao-motivos">Motivos Para Te Amar ✨</h3>
+              <p class="descricao-secao-motivos">
+                Clique no botão abaixo para ler uma das infinitas razões de você
+                ser tão especial para mim.
+              </p>
+              <div class="cartao-mensagem-exibida" id="textoMensagemAmor">
+                "O seu sorriso ilumina e transforma o meu dia inteiro."
+              </div>
+              <button type="button" class="botao-acao" id="botaoSortearMotivo">
+                <span>Tirar Outro Motivo</span>
+                <span aria-hidden="true">💌</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: 3 Polaroids (slots 3, 4, 5) -->
+          <aside
+            class="coluna-polaroids coluna-direita"
+            aria-label="Fotos à direita"
+          >
+            <article class="card-polaroid-autentica polaroid-dir-1">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="3" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="3"></span>
+            </article>
+            <article class="card-polaroid-autentica polaroid-dir-2">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="4" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="4"></span>
+            </article>
+            <article class="card-polaroid-autentica polaroid-dir-3">
+              <div class="janela-foto-polaroid">
+                <img class="polaroid-img-elemento" data-slot="5" alt="" />
+              </div>
+              <span class="titulo-foto-polaroid" data-slot="5"></span>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Rodapé (temporariamente comentado) -->
+      <!--
+    <footer class="rodape-romantico">
+      <p>Feito com todo o amor do mundo por <strong>Diogo</strong> para <strong>Talita</strong> <span>❤️</span></p>
+    </footer>
+    --></main>
+
+    <!-- Modal: galeria de fotos extras -->
+    <div
+      class="modal-galeria"
+      id="modalGaleria"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Galeria de fotos"
+      hidden
+    >
+      <div class="modal-galeria-overlay" id="modalOverlay"></div>
+      <div class="modal-galeria-caixa">
+        <button
+          class="modal-fechar"
+          id="btnFecharModal"
+          aria-label="Fechar galeria"
+        >
+          ✕
+        </button>
+        <h2 class="modal-titulo">Nossas Memórias 💖</h2>
+        <div class="modal-grid" id="modalGrid"></div>
+      </div>
+    </div>
+
+    <!-- Lightbox para visualizar foto em tela cheia -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Visualizar foto"
+      hidden
+    >
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <div class="lightbox-conteudo">
+        <button
+          class="lightbox-fechar"
+          id="btnFecharLightbox"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
