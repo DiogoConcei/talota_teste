@@ -823,7 +823,7 @@ body {
 @media (min-width: 961px) and (min-height: 560px) {
   :root {
     --col-w: clamp(180px, 15vw, 270px);    
-    --carta-w: clamp(500px, 40vw, 740px);
+    --carta-w: clamp(800px, 80vw, 950px);
   }
 
   .composicao-triptico-romantica {
@@ -842,7 +842,7 @@ body {
   }
 
   .papel-texto {
-    font-size: clamp(11px, min(1.5vh, 1vw), 17px);
+    font-size: clamp(11px, min(1.4vh, 1vw), 17px);
     line-height: 1.45;
     margin-bottom: 6px;
   }
@@ -920,4 +920,93 @@ body {
   .descricao-secao-motivos { display: none; }
   .cartao-mensagem-exibida { min-height: 0; margin: 0; padding: 6px 10px; font-size: 0.8rem; line-height: 1.3; }
   .caixa-interativa-motivos .botao-acao { padding: 6px 14px; font-size: 0.8rem; white-space: nowrap; }
+}
+
+/* ─── Mobile / tablet (até 960px) ───────────────────────────────────────── */
+@media (max-width: 960px) {
+  .container-principal {
+    padding: 16px 14px calc(32px + env(safe-area-inset-bottom));
+    gap: 16px;
+  }
+
+  /* Tudo vira uma grade só: os containers deixam de existir no layout */
+  .area-foco-cartinha,
+  .coluna-polaroids { display: contents; }
+
+  .composicao-triptico-romantica {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+    max-width: 520px;
+    align-items: start;
+  }
+
+  /* Ordem: carta → fotos → "Ver mais fotos" → motivos */
+  .papel-cartinha-centro.foco-principal { order: 1; }
+  .card-polaroid-autentica { order: 2; }
+  .botao-ver-mais { order: 3; justify-self: center; padding: 13px 30px; }
+  .caixa-interativa-motivos { order: 4; }
+
+  .papel-cartinha-centro.foco-principal,
+  .botao-ver-mais,
+  .caixa-interativa-motivos { grid-column: 1 / -1; }
+
+  /* Carta: texto completo, sem rolagem interna e sem efeito de hover */
+  .papel-cartinha-centro.foco-principal,
+  .papel-cartinha-centro.foco-principal:hover {
+    min-height: 0;
+    max-height: none;
+    padding: 30px 22px 26px;
+    transform: none;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .papel-corpo { overflow: visible; padding-right: 0; }
+  .selo-cartinha-topo { font-size: 1.8rem; margin-bottom: 6px; }
+  .papel-titulo { font-size: 1.5rem; margin-bottom: 14px; }
+  .papel-texto { font-size: 1rem; line-height: 1.7; margin-bottom: 22px; }
+  .papel-assinatura { font-size: 1.05rem; }
+
+  /* Polaroids: 2 por linha, mantendo a inclinação mesmo após o toque */
+  .polaroid-esq-1 { --giro: rotate(-3deg); }
+  .polaroid-esq-2 { --giro: rotate(2.5deg); }
+  .polaroid-esq-3 { --giro: rotate(-2deg); }
+  .polaroid-dir-1 { --giro: rotate(2.5deg); }
+  .polaroid-dir-2 { --giro: rotate(-3deg); }
+  .polaroid-dir-3 { --giro: rotate(2deg); }
+
+  .card-polaroid-autentica,
+  .card-polaroid-autentica:hover {
+    max-width: none;
+    padding: 10px 10px 0;
+    transform: var(--giro);
+  }
+
+  .titulo-foto-polaroid { height: 32px; font-size: 0.74rem; }
+
+  /* Motivos: caixa larga, botão fácil de tocar */
+  .caixa-interativa-motivos,
+  .caixa-interativa-motivos:hover {
+    max-width: none;
+    padding: 20px 18px;
+    transform: none;
+  }
+
+  .caixa-interativa-motivos .botao-acao {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Galeria "Ver mais fotos": 2 colunas no celular */
+  .modal-galeria-caixa { width: 94vw; max-height: 88dvh; padding: 36px 14px 16px; }
+  .modal-titulo { font-size: 1.25rem; margin-bottom: 16px; }
+  .modal-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+}
+
+/* Tablet e celular deitado: 3 fotos por linha */
+@media (min-width: 600px) and (max-width: 960px) {
+  .composicao-triptico-romantica { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; }
+  .papel-cartinha-centro.foco-principal,
+  .papel-cartinha-centro.foco-principal:hover { padding: 38px 40px 32px; }
+  .papel-texto { font-size: 1.05rem; }
 }
